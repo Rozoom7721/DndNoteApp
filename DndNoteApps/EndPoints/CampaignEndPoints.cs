@@ -29,8 +29,8 @@ public static class CampaignEndPoints
             return campaign is null ? Results.NotFound() : Results.Ok(campaign);
         })
         .WithName(GetGameEndpointName);
-        //POST /api/campaigns
 
+        //POST /api/campaigns
         group.MapPost("/", async (CreateCampaignDto newCampaign, DndNoteContext dbContext) =>
         {
             try
@@ -51,6 +51,30 @@ public static class CampaignEndPoints
             {
                 return Results.Problem(ex.Message);
             }
+        });
+
+        //PUT /api/campaigns/{id}
+        group.MapPut("/{id}", async (int id, UpdateCampaignDto updatedCampaign, DndNoteContext dbContext) =>
+        {
+            var existingCampaign = await dbContext.Campaigns.FindAsync(id);
+
+            if (existingCampaign is null)
+            {
+                return Results.NotFound();
+            }
+            dbContext.Entry(existingCampaign).CurrentValues.SetValues(updatedCampaign.ToEntity(id));
+            await dbContext.SaveChangesAsync();
+
+            return Results.NoContent();
+        });
+
+        //Delete /api/campaigns/{id}
+        group.MapDelete("/{id}", async (int id, DndNoteContext dbContext) =>
+        {
+            await dbContext.Campaigns
+                .Where(campaign => campaign.Id == id)
+                .ExecuteDeleteAsync();
+            return Results.NoContent();
         });
         return group;
     }

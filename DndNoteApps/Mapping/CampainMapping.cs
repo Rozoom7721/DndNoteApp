@@ -14,4 +14,13 @@ public static class CampainMapping
             StartDate = dto.StartDate
         };
     }
+    public static Campaign ToEntity(this UpdateCampaignDto campaign, int id)
+    {
+        return new Campaign
+        {
+            Id = id,
+            Name = campaign.Name,
+            StartDate = campaign.StartDate
+        };
+    }
 }
