@@ -9,7 +9,7 @@ namespace DndNoteApps.EndPoints;
 
 public static class CampaignEndPoints
 {
-    const string GetGameEndpointName = "GetCampaign";
+    const string GetCampaignEndpointName = "GetCampaign";
     
     public static RouteGroupBuilder MapCampaignEndPoints(this WebApplication app)
     {
@@ -28,29 +28,21 @@ public static class CampaignEndPoints
 
             return campaign is null ? Results.NotFound() : Results.Ok(campaign);
         })
-        .WithName(GetGameEndpointName);
+        .WithName(GetCampaignEndpointName);
 
         //POST /api/campaigns
         group.MapPost("/", async (CreateCampaignDto newCampaign, DndNoteContext dbContext) =>
         {
-            try
-            {
                 Campaign campaignToAdd = newCampaign.ToEntity();
 
                 dbContext.Campaigns.Add(campaignToAdd);
                 await dbContext.SaveChangesAsync();
 
                 return Results.CreatedAtRoute(
-                    GetGameEndpointName,
+                    GetCampaignEndpointName,
                     new { id = campaignToAdd.Id },
                     campaignToAdd
                 );
-            }
-
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
         });
 
         //PUT /api/campaigns/{id}
