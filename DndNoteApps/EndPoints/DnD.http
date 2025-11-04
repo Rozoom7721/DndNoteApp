@@ -1,10 +1,14 @@
-GET http://localhost:5102/api/campaigns
+GET http://localhost:5102/api/
 
 ###
 POST http://localhost:5102/api/campaigns
 Content-Type: application/json
 
 {
-  "Name": "My First Campaign",
-  "StartDate": "2024-01-15"
+  "Name": "Test Place",
+  "Fraction": "Test Fraction",
+  "PlayerNote": "Test Note",
+  "DmNote": "Test Dm Note",
+  "Description": "Test Description",
+  "CampaignId": 1
 }

@@ -18,11 +18,10 @@ public static class QuestEndPoint
 
         //GET /api/quests
         group.MapGet("/", async (DndNoteContext dbContext) =>
-        {
+        
             await dbContext.Quests
                 .AsNoTracking()
-                .ToListAsync();
-        });
+                .ToListAsync());
 
         //GET /api/quests/{id}
         group.MapGet("/{id}", async (DndNoteContext dbContext, int id) =>

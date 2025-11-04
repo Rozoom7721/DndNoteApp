@@ -14,15 +14,14 @@ public static class PlaceEndPoint
     
     public static RouteGroupBuilder MapPlaceEndPoints(this WebApplication app)
     {
-        var group = app.MapGroup("api/places");
+        var group = app.MapGroup("/api/places");
 
         //GET /api/places
         group.MapGet("/", async (DndNoteContext dbContext) =>
-        {
+
             await dbContext.Places
                 .AsNoTracking()
-                .ToListAsync();
-        });
+                .ToListAsync());
 
         //GET /api/places/{id}
         group.MapGet("/{id}", async (DndNoteContext dbContext, int id) =>

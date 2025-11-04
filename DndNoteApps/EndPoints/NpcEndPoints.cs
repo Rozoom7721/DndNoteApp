@@ -19,11 +19,10 @@ public static class NpcEndPoints
 
         //GET /api/npcs
         group.MapGet("/", async (DndNoteContext dbContext) =>
-        {
+        
             await dbContext.Npcs
                 .AsNoTracking()
-                .ToListAsync();
-        });
+                .ToListAsync());
 
         //GET /api/npcs/{id}
         group.MapGet("/{id}", async (DndNoteContext dbContext, int id) =>
