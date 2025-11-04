@@ -13,8 +13,5 @@ public record class CreateNpcDto(
     string PlayerNote,
     string DmNote,
     [Required]int CampaignId,
-    [Required]int QuestId
-)
-{
-
-}
+    int QuestId
+);

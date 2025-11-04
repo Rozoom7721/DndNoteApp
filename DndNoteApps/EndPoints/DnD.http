@@ -5,7 +5,6 @@ POST http://localhost:5102/api/campaigns
 Content-Type: application/json
 
 {
-  "name": "My First Campaign",
-  "description": "An epic adventure begins.",
+  "Name": "My First Campaign",
   "StartDate": "2024-01-15"
 }

@@ -6,12 +6,12 @@ namespace DndNoteApps.Mapping;
 
 public static class CampainMapping
 {
-    public static Campaign ToEntity(this CreateCampaignDto dto)
+    public static Campaign ToEntity(this CreateCampaignDto campaign)
     {
         return new Campaign
         {
-            Name = dto.Name,
-            StartDate = dto.StartDate
+            Name = campaign.Name,
+            StartDate = campaign.StartDate
         };
     }
     public static Campaign ToEntity(this UpdateCampaignDto campaign, int id)

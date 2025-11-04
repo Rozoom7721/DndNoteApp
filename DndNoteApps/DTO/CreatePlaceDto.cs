@@ -1,18 +1,15 @@
-using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace DndNoteApps.DTO;
 
-public record class UpdateNpcDto
-(
+public record class CreatePlaceDto(
     [Required][StringLength(50)] string Name,
-    string Race,
-    string Description,
-    string PlaceFound,
-    string AttitudeTowardsPlayers,
+    string Fraction,
     string PlayerNote,
     string DmNote,
+    string Description,
     [Required]int CampaignId,
-    int QuestId
+    int QuestId,
+    int NpcId
 );
-
