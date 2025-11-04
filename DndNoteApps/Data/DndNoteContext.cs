@@ -10,4 +10,6 @@ public class DndNoteContext(DbContextOptions<DndNoteContext> options)
     public DbSet<Campaign> Campaigns => Set<Campaign>();
     public DbSet<Npc> Npcs => Set<Npc>();
     public DbSet<SesionNote> SesionNotes => Set<SesionNote>();
+    public DbSet<Quest> Quests => Set<Quest>();
+    public DbSet<Place> Places => Set<Place>();
 }

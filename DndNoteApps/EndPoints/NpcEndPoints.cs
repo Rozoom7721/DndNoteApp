@@ -13,7 +13,7 @@ public static class NpcEndPoints
 {
     const string GetNpcEndpointName = "GetNpc";
 
-    public static async Task<RouteGroupBuilder> MapNpcEndPoints(this WebApplication app)
+    public static RouteGroupBuilder MapNpcEndPoints(this WebApplication app)
     {
         var group = app.MapGroup("/api/npcs");
 

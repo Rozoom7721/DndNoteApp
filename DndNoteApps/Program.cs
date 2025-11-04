@@ -10,6 +10,9 @@ builder.Services.AddSqlite<DndNoteContext>(connString);
 var app = builder.Build();
 
 app.MapCampaignEndPoints();
+app.MapNpcEndPoints();
+app.MapQuestEndPoints();
+app.MapPlaceEndPoints();
 
 
 
